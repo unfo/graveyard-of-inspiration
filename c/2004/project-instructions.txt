@@ -1,0 +1,145 @@
+          INSTRUCTIONS FOR THE PROGRAMMING IN C PROJECT (Autumn 2003)
+
+GENERAL
+
+   Choose  one  programming task from the task list and implement it with
+   the  ANSI-C  language. You may work on whichever computer you wish, but
+   the  resulting  program must run on kruuna (so keep transferability in
+   mind).  There  are  no  separate  instruction sessions for the project
+   work.  You  may  ask  for  instructions  and  guidance at the exercise
+   sessions.  Give  the number of the programming task you have chosen to
+   the  instructor. When you are done, gather all the files in connection
+   with  your  solutions  and  send  them as one package to your exercise
+   group  instructor  by  e-mail.  For  more details, please read on. The
+   project  work IS COMPULSORY. If it has not been completed, you may not
+   enter  the  resit  exam,  but you have to retake the whole course. The
+   project deadline is Friday 12 Dec 2003. 
+
+   Outline  the  problem  field and set the function specification, data
+   structures to be used and the main strategies of the solution. Present
+   your  choices  and solutions to the exercise instructor. A good set of
+   data  structures  may  save  you  a lot of code writing. 
+
+
+   Evaluate the feasibility of your plan:
+
+     * The  first solution that comes to mind is not necessarily the best
+       one
+     * You should not invest too much time and energy into a bad solution
+       at an early stage
+     * A good program functions as it is supposed to, efficiency is often
+       less important
+
+   Put  the  presentations  of  functions,  type  specifications  of data
+   structures etc into specification files with the ending .h. The actual
+   code  and variable specifications should be put into source code files
+   with  the  ending  .c.  Always  make  a  separate main program and put
+   functions  that  belong  together  according to some obvious task that
+   they do together in their own source code files. Always use good taste
+   when you work:
+     * coherent programming style
+     * avoid peculiar and cryptic language in your coding
+     * a shock-proof program neither creaks nor crashes
+     * add brief instructions
+     * variables: descriptive names that take into account their purpose,
+       meaning and use
+
+   Testing should be done systematically from the beginning. You can find
+   small errors and 'suspicious' parts with the option -Wall -ansi in the
+   gcc compiler.
+
+DOCUMENTATION: A NECESSITY
+
+   This  time,  it  is enough with a user's guide of a couple of pages in
+   the  file guide, as well as careful commentation. The following simple
+   rules apply to commentation:
+     * Each program file contains a general comment:
+          + What the use of the file is
+          + What functions the file contains
+          + Which of the other files' functions the file uses
+          + Library functions do not have to be listed
+     * Clarify the main data structures
+     * For each function, explain:
+          + What the function does
+          + What its parameters are
+          + What it returns
+     * Avoid  unnecessary  commentation.  Use  clear  variable names, the
+       structure of the language is assumed to be known, etc.
+     * Comment on difficult and exceptional solutions
+
+HANDING IN THE PROJECT: HOW TO DO IT
+
+   Hand  in  you  project  to  the  instructor  of your exercise group by
+   e-mail.  Send  it  as  one  package  that is easy to open. The package
+   should include:
+     * the file guide
+     * all the code and specification files for the source language
+     * the file Makefile with which the program can be compiled
+     * files used for testing and other material from testing
+
+   You do not have to make the file Makefile yourself. Here is a sample:
+#Put the C compiler (eg gcc) you used after =
+CC=
+
+#put the options (eg -Wall) after =
+CFLAGS=
+
+#put .c program files (eg main.c, trunk.c) after=
+SRC=
+
+#put the equivalent files ending in .o (eg main.o, trunk.o) after =
+OBJS=
+
+#put the name of your program (eg solitaire) after =
+PROGRAM=
+
+#this is not necessary because make includes this as an implicit rule
+%.o: %.c
+	$(CC) -c $(CFLAGS) $<
+
+#NB You have to press the tabulator before $(CC), not the spacebar!
+$(PROGRAM): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM)
+
+#NB You have to press the tabulator before rm, not the spacebar!
+clean:
+	rm $(OBJS) $(PROGRAM) core *.bak
+
+   You  may use Makefile in the implementation stage. If Makefile is made
+   correctly,  the  command make will compile the program you have chosen
+   from the source code files. The command make clean cleans out unwanted
+   files  in  your  work folder. When you are ready to hand in your work,
+   please follow these instructions.
+     * 1. Create a folder yourname-c and move the necessary files there.
+       You can do that like this, for example (assuming that all the test
+       material  has  the  ending .tst): mkdir c-project; mv *.c *.h guide
+       Makefile *.tst yourname-c Do not go to the folder yourname-c, but stay
+       in the folder where you created the folder yourname-c.
+     * 2. Use tar or zip command to create a single archive file that 
+       contains the yourname-c directory. Mail it to your instructor as an
+       email attachment e.g. using pine. You may also return it on a 
+       floppy disk.
+
+     Do not send the package to the instructor more than once! 
+     The project is passed if
+     * you return it by the deadline and follow the instructions
+     * it functions without errors and according to the task set for it
+     * you  have  made  the  documentation  according to the requirements
+     Larger errors are returned for amendments.
+
+
+PROJECT MARKS
+
+Project work carries ten marks.
+	
+7 marks are awarded to a working solution 
+
+The other 3 marks will be allotted based on the programming style, 
+i.e well chosen functions, clear documentation, good programming practices
+followed.
+
+To pass the project you need to present a working solution.
+Do not spend too much time in perfecting your solution with 
+unnecessary optimizations.
+ 
+ The  absolute  deadline  is 12 Dec 2003

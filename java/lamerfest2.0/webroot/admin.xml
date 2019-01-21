@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<static>
+
+	<script>
+		function infoTv(){
+			if(!document.all){
+				alert("No! IE4+ only");
+				return
+			}
+			open(
+				"/infotv",
+				"infoTv",
+				"toolbars=0,fullscreen=1"
+			);
+		}
+	</script>
+
+	<span class="textHeading">Admin-sivut</span><br/>
+	<br/>
+
+	<a href="/usermanager">Käyttäjähallinta</a><br/>
+	<a href="/infomanager">Uutishallinta</a><br/>
+	<a href="/votingmanager">Äänestyshallinta</a><br/>
+	<a href="javascript:infoTv()">Avaa InfoTV (ie4+/windows only)</a><br/>
+
+</static>

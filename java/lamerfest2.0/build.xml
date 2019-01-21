@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+	The Ant-file for Lamerfest 2.0
+-->
+
+<project name="lamerfest" default="compile-all" basedir=".">
+
+	<target name="start">
+
+		<property name="build" value="build"/>
+		<property name="tmp" value="${build}/tmp"/>
+
+		<property name="javaSrcDir" value="src"/>
+		<property name="javaTargetDir" value="${tmp}/classes"/>
+		<property name="javaDocDir" value="/lamerfest/docs/javadoc"/>
+
+		<property name="webroot" value="webroot"/>
+		<property name="warDir" value="${tmp}/webroot"/>
+
+		<property name="resources" value="resources"/>
+
+	</target>
+
+	<target name="prepare" depends="start">
+		<deltree dir="${tmp}"/>
+		<mkdir dir="${build}"/>
+		<mkdir dir="${tmp}"/>
+		<mkdir dir="${javaTargetDir}"/>
+	</target>
+
+	<target name="compile" depends="prepare">
+
+		<!-- compile all java stuff -->
+		<javac srcdir="${javaSrcDir}" destdir="${javaTargetDir}" includes="org/lamerfest/**"/>
+
+	</target>
+
+	<target name="ejb" depends="compile">
+
+		<!-- package ejb stuff -->
+		<copydir src="${resources}/META-INF" dest="${javaTargetDir}/META-INF"/>
+		<jar jarfile="${javaTargetDir}/lamerfest.jar" basedir="${javaTargetDir}"
+			excludes="WEB-INF/**,META-INF/application.xml,org/lamerfest/servlets/**"
+		/>
+
+	</target>
+
+	<target name="deploy" depends="ejb">
+	
+		<!-- deploy ejb stuff by copying the jar to jBoss's deploy-dir -->
+		<copyfile src="${javaTargetDir}/lamerfest.jar" dest="/usr/local/jboss/deploy/lamerfest.jar"/>
+
+	</target>
+
+	<target name="war" depends="compile">
+
+		<!-- package war stuff -->
+		<copydir src="${resources}/WEB-INF" dest="${warDir}/WEB-INF"/>
+		<copydir src="${javaTargetDir}/org/lamerfest/servlets"
+			dest="${warDir}/WEB-INF/classes/org/lamerfest/servlets"/>
+		<copydir src="${webroot}" dest="${warDir}"/>
+		<jar jarfile="${javaTargetDir}/lamerfest.war"
+			basedir="${warDir}"
+		/>
+
+	</target>
+
+	<target name="ear" depends="ejb,war">
+
+		<!-- wrap everything in an EAR archive -->
+
+		<jar jarfile="${build}/lamerfest.ear"
+			basedir="${javaTargetDir}"
+			includes="lamerfest.jar,lamerfest.war,META-INF/application.xml"
+		/>
+
+	</target>
+
+	<target name="javadoc">
+		<mkdir dir="${javaDocDir}"/>
+		<javadoc
+			sourcepath="${javaSrcDir}"
+			destdir="${javaDocDir}"
+			packagenames="org.lamerfest.*"
+			windowtitle="Lamerfest 2.0 Java API Documentation"
+			bottom="Copyright &#169; Jari Aarniala (foo@dlc.fi), 2000"/>
+	</target>
+
+</project>

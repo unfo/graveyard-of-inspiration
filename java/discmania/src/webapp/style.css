@@ -1,0 +1,57 @@
+body, td, input {
+    font-family: georgia, arial, helvetica;
+    font-size: 10pt;
+}
+
+th {
+    text-align: left;
+}
+
+div.hr {
+    width: 100%;
+    border-top: 1px dotted #bbbbbb;
+}
+
+div.content, div.content td, div.content th {
+    font-size: 9pt;
+}
+
+.active {
+    background-color: #dedede;
+}
+
+.removed {
+    background-color: #dedede;
+    color: #aaaaaa;
+}
+
+.nodiscs {
+    color: #ff0000;
+}
+
+.searchresults {
+    margin-bottom: 16px;
+    font-size: 10pt;
+}
+
+.searchresults a {
+    margin-left: 5px;
+}
+
+.current a {
+    font-weight: bold;
+}
+
+#links {
+    padding: 10px;
+    padding-left: 0px;
+    border-bottom: 1px dotted #666666;
+    margin-bottom: 15px;
+}
+
+#footer {
+    padding: 10px;
+    padding-left: 0px;
+    border-top: 1px dotted #666666;
+    margin-top: 15px;
+}

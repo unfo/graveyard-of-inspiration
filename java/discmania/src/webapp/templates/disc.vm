@@ -1,0 +1,52 @@
+#*
+    disc.vm
+    Shows information on a single disc.
+    $Id: disc.vm,v 1.2 2002/12/04 13:31:23 foo Exp $
+*#
+
+#if ($disc)
+    <b>$disc.artist</b> : <i>$disc.name</i> ($disc.price &#8364;)
+    #if($disc.removed)
+        <blockquote>
+        <b>Note:</b> This disc is no longer in our catalogue.
+        </blockquote>
+    #else
+    <p>
+        <b>
+            #if($disc.balance < 1)
+                <span class="nodiscs">$disc.balance</a>
+            #else
+                $disc.balance
+            #end
+        </b> disc(s) in our warehouse.
+        <a href="cart?action=add&id=$disc.id">Add to your shopping cart</a>.
+    </p>
+    #end
+    <p>
+    Track listing:
+    </p>
+    #if ($disc.tracks.size() == 0)
+        No tracks!
+    #else
+    <table>
+        #foreach ($track in $disc.tracks)
+        <tr>
+            <td><b>$track.number</b></td>
+            <td>$track.name</td>
+        </tr>
+        #end
+    </table>
+    #end
+    #if($alsoBought && $alsoBought.size() > 0)
+    <div style="margin-top:10px">
+        Customers who bought <i>$disc.name</i> also bought
+        <ul>
+        #foreach($d in $alsoBought)
+            <li><a href="view?id=$d.id"><i>"$d.name"</i></a> by $d.artist</li>
+        #end
+        </ul>
+    </div>
+    #end
+#else
+    No disc found!
+#end

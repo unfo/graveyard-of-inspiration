@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<static>
+
+<span class="textHeading">Verkko-ohjeita</span><br/>
+
+<p>
+<b>TCP/IP asetukset</b>
+<ul>
+<li>ota control panel (ohjauspaneeli) ja network (verkko)</li>
+<li>
+ota tci/ip ominaisuudet verkkokortille ja laita seuraavat asetukset: (kts. <a href="/kuvat/valitse-tcpip-ominaisuudet.gif">kuva</a>)
+<br/>
+obtain an IP address automatically<br/>
+use the following DNS server address(es): 10.104.33.50<br/>
+eli laita DNS palvelimen osoitteeksi tuo ip (kts. <a href="/kuvat/valitse-dns-server.gif">kuva</a>)<br/>
+</li>
+<li>WINS:iä ei oteta käyttöön ja pidetään DHCP enabled (kts. <a href="/kuvat/dhcp-kayttoon.gif">kuva</a>)</li>
+</ul>
+</p>
+
+<p>
+<b>näin pääset irkkiin.</b>
+<ul>
+<li>laita irc serverin osoitteeksi proxy.vaski.net</li>
+<li>portti on 6667 ircnettiin ja 6670 Qnettiin.</li>
+</ul>
+</p>
+
+<p>
+<b>jos haluat jonnekin ulkopuoliseen shelliin...</b>
+<ul>
+<li>ota telnet-yhteys osoitteeseen telnetproxy.vaski.net ja tämän jälkeen<br/>
+<b>open</b> <i>jatähänosoite</i></li>
+</ul>
+</p>
+<p>
+<b>Intter netti ohjeita.</b>
+<ul>
+<li>ota IE:stä Tools ja Internet Options. (kts. <a href="/kuvat/tools-interenet-options.gif">kuva</a>)</li>
+<li>valitse välilehti Connections</li>
+<li>Valitse yhteyden ottotyypiksi NEVER DIAL A CONNECTION (kts. <a href="/kuvat/never-dial-a-connection.gif">kuva</a>)</li>
+<li>kilkkaa LAN SETTINGS nappulaa.</li>
+<li>laita rasti USE PROXY SERVER ruutuun ja paina ADVANCED (kts. <a href="/kuvat/use-a-proxy-server.gif">kuva</a>)</li>
+<li>kirjoita ensimmäiselle riville proxy osoitteeksi proxy.vaski.net ja portiksi 8080</li>
+<li>
+laita sama proxy kaikkiin muihin paitsi Secure kohtaan laita sec.vaski.net ja portti 80
+jotta pääset esim. Hotmailiin ja muihin https:// alkuisiin osoitteisiin
+</li>
+<li>Laita kohtaan 'do not use proxies for' 10.104.*.* ja *.vaski.net (kts. <a href="/kuvat/proxy-settings.gif">kuva</a>)</li>
+</ul>
+</p>
+
+</static>

@@ -1,0 +1,9 @@
+body, td, th, div  { font-family: "Trebuchet MS", Arial, helvetica }
+a { color: #333333 }
+a:hover { color: #FFA500; }
+#logout { background-color: #FFA500; border-left: 1px solid #737373 }
+#logout a { color: white; text-decoration: none }
+.textHeading { color: #737373 }
+.heading { color: #737373 }
+.listTable td { background: #FFFFFF }
+.listTable { background: #DEDEDE }

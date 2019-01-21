@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<static>
+
+	<script> location.href = "/index"; </script>
+
+</static>

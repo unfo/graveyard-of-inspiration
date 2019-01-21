@@ -1,0 +1,29 @@
+<h3>Login</h3>
+
+#if ($page)
+<p>
+The page you requested requires that you are logged on to our system.
+Please login using the form below.
+</p>
+#end
+
+Don't have an account yet? <a href="register">Register first</a>
+
+<form action="login" method="post">
+    <input type="hidden" name="action" value="login">
+    <input type="hidden" name="page"   value="$!page">
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" value="$!username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Login >>">
+        </tr>
+    </table>
+</form>

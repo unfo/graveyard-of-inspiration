@@ -1,0 +1,19 @@
+#*
+    order_confirmation.vm
+    Asks for a confirmation on an order
+    $Id: order_confirmation.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Confirm order</h3>
+
+Please review the order you're about to make.
+<p>
+You can still <a href="cart">modify the contents of the cart</a>.
+</p>
+
+#parse ("order.vm")
+
+<form action="checkout" method="post">
+    <input type="hidden" name="phase" value="confirmed">
+    <input type="submit" value="Place order >>">
+</form>

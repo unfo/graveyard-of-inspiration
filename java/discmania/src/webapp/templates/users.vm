@@ -1,0 +1,57 @@
+#*
+    users.vm
+    For managing users.
+    $Id: users.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Manage users</h3>
+
+#if(!$action)
+
+<table cellpadding="3" cellspacing="0">
+    <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Type</th>
+    </tr>
+#foreach ($user in $users)
+<form action="users" method="post">
+    <input type="hidden" name="action" value="modify">
+    <input type="hidden" name="login" value="$user.login">
+    <tr valign="top">
+        <td>$user.login</td>
+        <td>$user.password</td>
+        <td>$user.name</td>
+        <td>$user.address</td>
+        <td>$user.email</td>
+        <td>$user.phone</td>
+        <td>
+            <select name="type">
+                #set ($i = 0)
+                #foreach ($type in $types)
+                    <option value="$i" #if ($i == $user.type) selected="1"#end >$type</option>
+                    #set ($i = $i + 1)
+                #end
+            </select>
+            <br>
+            <input type="submit" value="Change >>">
+        </td>
+        <td><a href="users?action=delete&login=$user.login" onclick="return confirm('Are you sure?');">Delete >></a>
+    </tr>
+</form>
+#end
+</table>
+
+#elseif ($action.equals("modify"))
+    #if (!$errors)
+        User type changed!
+    #end
+#elseif ($action.equals("delete"))
+    #if (!$errors)
+        User deleted.
+    #end
+#end

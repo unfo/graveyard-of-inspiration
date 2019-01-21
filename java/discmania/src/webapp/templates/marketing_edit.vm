@@ -1,0 +1,34 @@
+#*
+    marketing_edit.vm
+    For adding new / editing existing discs.
+    $Id: marketing_edit.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Add / edit disc</h3>
+
+<form action="marketing" method="post">
+    <input type="hidden" name="action" value="$action">
+    <input type="hidden" name="form" value="yep">
+    #if ($action.equals("edit"))
+        <input type="hidden" name="id" value="$!id">
+        <a href="marketing?action=edit_tracks&id=$id">Edit tracks >></a>
+    #end
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Artist</th>
+            <td><input type="text" name="artist" value="$!artist"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><input type="text" name="name" value="$!name"></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td><input type="text" name="price" value="$!price"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="$action >>"></td>
+        </tr>
+    </table>
+</form>

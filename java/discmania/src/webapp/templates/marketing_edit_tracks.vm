@@ -1,0 +1,31 @@
+#*
+    marketing_edit_tracks.vm
+    For editing the track listings.
+    $Id: marketing_edit_tracks.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Edit track listing</h3>
+
+<table cellpadding="5" cellspacing="0">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+    </tr>
+#foreach ($track in $tracks)
+    <tr>
+        <td>$track.number</td>
+        <td>$track.name</td>
+        <td><a href="marketing?action=edit_tracks&form=delete&id=$id&track=$track.number">Delete >></a></td>
+    </tr>
+#end
+    <form action="marketing" method="post">
+        <input type="hidden" name="action" value="edit_tracks">
+        <input type="hidden" name="form" value="add">
+        <input type="hidden" name="id" value="$id">
+        <tr>
+            <td><input type="text" size="5" name="track"></td>
+            <td><input type="text" name="name"></td>
+            <td><input type="submit" value="Add new >>"></td>
+        </tr>
+    </form>
+</table>

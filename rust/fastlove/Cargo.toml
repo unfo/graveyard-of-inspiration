@@ -1,0 +1,5 @@
+[package]
+
+name = "fastlove"
+version = "0.0.1"
+authors = ["Jan Wikholm <jw@jw.fi>"]

@@ -1,0 +1,113 @@
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+
+    int inet_aton(const char *cp, struct in_addr *inp); 
+
+And here's a sample usage, while packing a struct sockaddr_in (this example will make more sense to you when you get to the sections on bind() and connect().)
+
+    struct sockaddr_in my_addr;
+
+    my_addr.sin_family = AF_INET;         // host byte order
+    my_addr.sin_port = htons(MYPORT);     // short, network byte order
+    inet_aton("10.12.110.57", &(my_addr.sin_addr));
+    memset(&(my_addr.sin_zero), '\0', 8); // zero the rest of the struct 
+
+    printf("%s", inet_ntoa(ina.sin_addr)); 
+    
+    
+    
+    
+    
+    
+    #include <string.h>
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+
+    #define MYPORT 3490
+
+    main()
+    {
+        int sockfd;
+        struct sockaddr_in my_addr;
+
+        sockfd = socket(AF_INET, SOCK_STREAM, 0); // do some error checking!
+
+        my_addr.sin_family = AF_INET;         // host byte order
+        my_addr.sin_port = htons(MYPORT);     // short, network byte order
+        my_addr.sin_addr.s_addr = inet_addr("10.12.110.57");
+        memset(&(my_addr.sin_zero), '\0', 8); // zero the rest of the struct
+
+        // don't forget your error checking for bind():
+        bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr));
+        
+        
+      my_addr.sin_port = 0; // choose an unused port at random
+      my_addr.sin_addr.s_addr = INADDR_ANY;  // use my IP address 
+      
+      
+      
+      
+ int yes=1;
+	//char yes='1'; // Solaris people use this
+
+    // lose the pesky "Address already in use" error message
+    if (setsockopt(listener,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+        perror("setsockopt");
+        exit(1);
+    } 
+    
+    
+    
+    
+    
+    
+    #include <string.h>
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+
+    #define MYPORT 3490    // the port users will be connecting to
+
+    #define BACKLOG 10     // how many pending connections queue will hold
+
+    main()
+    {
+        int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd
+        struct sockaddr_in my_addr;    // my address information
+        struct sockaddr_in their_addr; // connector's address information
+        int sin_size;
+
+        sockfd = socket(AF_INET, SOCK_STREAM, 0); // do some error checking!
+
+        my_addr.sin_family = AF_INET;         // host byte order
+        my_addr.sin_port = htons(MYPORT);     // short, network byte order
+        my_addr.sin_addr.s_addr = INADDR_ANY; // auto-fill with my IP
+        memset(&(my_addr.sin_zero), '\0', 8); // zero the rest of the struct
+
+        // don't forget your error checking for these calls:
+        bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr));
+
+        listen(sockfd, BACKLOG);
+
+        sin_size = sizeof(struct sockaddr_in);
+        new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            char *msg = "Beej was here!";
+    int len, bytes_sent;
+    .
+    .
+    len = strlen(msg);
+    bytes_sent = send(sockfd, msg, len, 0);
+    
+    
+    int recv(int sockfd, void *buf, int len, unsigned int flags); 

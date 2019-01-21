@@ -1,0 +1,13 @@
+#*
+    cart.vm
+    Shopping cart view
+    $Id: cart.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Shopping cart</h3>
+
+<a href="cart?action=clear">Clear shopping cart</a>
+
+#set ($order = $cart)
+#set ($is_shopping_cart = true)
+#parse ("order.vm")

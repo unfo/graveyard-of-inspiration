@@ -1,0 +1,62 @@
+#*
+    base.vm
+    The base template used on all pages
+    $Id: base.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+<html>
+    <head>
+        <title>Discmania</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+    
+    <h2>Discmania</h2>
+
+    <div id="links">
+        #if ($user && !$user.isCustomer())
+            <span class="active" style="padding: 5px; margin: 5px">
+            <b>Admin:</b>
+            #if ($user.isFromWarehouse())
+                <a href="warehouse">Warehouse</a>
+            #elseif ($user.isFromMarketing())
+                <a href="marketing">Manage discs</a>
+            #elseif ($user.isFromManagement())
+                <a href="users">Manage users</a>
+            #end
+            >>
+            </span>
+        #end
+
+            <a href="browse">Browse discs</a>
+            <a href="browse?action=search">Text search</a>
+            <a href="cart">View shopping cart</a>
+            |
+            #if($user)
+                <a href="orders">View order history</a>
+                <a href="login?action=logout">Logout</a>
+            #else
+                <a href="login">Login</a>
+            #end
+
+    </div>
+
+
+#if ($errors)
+Errors occured:
+<ul>
+    #foreach ($error in $errors)
+    <li>$error</li>
+    #end
+</ul>
+#end
+
+<div class="content">
+#parse ($content_template)
+</div>
+
+<div id="footer">
+    Discmania. &#169; Copyright Jari Aarniala, 2002.
+</div>
+
+    </body>
+</html>

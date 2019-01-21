@@ -1,0 +1,50 @@
+#*
+    marketing.vm
+    For managing the discs
+    $Id: marketing.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Manage discs</h3>
+
+<a href="marketing?action=add">Add new disc >></a>
+
+#if($discs.size() > 0)
+<table cellpadding="5" cellspacing="0">
+    <tr>
+       <th>Artist</th>
+       <th>Title</th>
+       <th>Price</th>
+       <th>In stock?</th>
+       <th>In catalogue?</th>
+    </tr>
+#foreach ($disc in $discs)
+    <tr #if($disc.removed) class="removed" #end >
+        <td>$disc.artist</td>
+        <td>$disc.name</td>
+        <td>$disc.price &#8364;</td>
+        <td>
+            #if ($disc.balance < 1)
+                No
+            #else
+                Yes ($disc.balance disc(s) available)
+            #end
+        <td>
+            #if($disc.removed)
+                No
+            #else
+                Yes
+            #end
+        </td>
+        <td><a href="view?id=$disc.id">View >></a></td>
+        <td><a href="marketing?action=edit&id=$disc.id">Edit >></a></td>
+        <td>
+            #if($disc.removed)
+                <a href="marketing?action=summon&id=$disc.id">Bring back to catalogue >></a>
+            #else
+                <a href="marketing?action=remove&id=$disc.id">Remove from catalogue >></a>
+            #end
+        </td>
+    </tr>
+#end
+</table>
+#end

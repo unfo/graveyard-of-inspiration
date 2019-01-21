@@ -1,0 +1,65 @@
+#*
+    order.vm
+    Shows the contents of an order/a shopping cart
+    $Id: order.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+#if ($order)
+
+<table cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th colspan="2">Quantity</th>
+        <th>Total price</th>
+    </tr>
+    #if ($order.items.size() == 0)
+    <tr>
+        <td colspan="6" align="center">
+            #if($is_shopping_cart)
+                Your shopping cart is empty.
+            #else
+                This order contains no discs.
+            #end
+        </td>
+    </tr>
+    #end
+    #foreach ($item in $order.items)
+        #if ($is_shopping_cart)
+        <form action="cart" method="post">
+        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="id" value="$item.disc.id">
+        #end
+        <tr style="border-top: 1px solid #cecece">
+            <td>$item.disc.artist</td>
+            <td>$item.disc.name</td>
+            <td>$item.disc.price &#8364;</td>
+            #if ($is_shopping_cart)
+            <td><input type="text" name="quantity" size="5" value="$item.quantity"></td>
+            <td><input type="submit" value="Update >>"></td>
+            #else
+            <td>$item.quantity</td>
+            <td></td>
+            #end
+            <td align="right">$item.totalPrice &#8364;</td>
+        </tr>
+        #if ($is_shopping_cart)
+        </form>
+        #end
+    #end
+    <tr>
+        <td colspan="6" align="right" style="border-top: 1px solid #cecece;">
+            Total price : <b>$order.totalPrice &#8364;</b>
+        </td>
+    </tr>
+    #if ($is_shopping_cart)
+    <tr>
+        <td colspan="6" align="right"><a href="checkout">Proceed to checkout</a></td>
+    </tr>
+    #end
+</table>
+
+#else
+Error.
+#end

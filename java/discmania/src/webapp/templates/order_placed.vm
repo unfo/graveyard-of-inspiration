@@ -1,0 +1,12 @@
+#*
+    order_placed.vm
+    Order success page.
+    $Id: order_placed.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<b>Order sent!</b>
+
+<p>
+    Thank you for shopping.
+    You should receive the discs within a few weeks.
+</p>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<static>
+
+<table border="1" cellpadding="4" cellspacing="2" style="border : single;">
+	<tr>
+		<td colspan="2">
+			Lamerfest 2.0:n aikataulu
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="background-color : rgb(102,153,204);">
+			LA 4.11
+		</td>
+	</tr>
+	<tr>
+		<td>
+			12:00
+		</td>
+		<td>
+			Ovet auki!
+		</td>
+	</tr>
+	<tr>
+		<td>
+			18:00
+		</td>
+		<td>
+			Viralliset avajaiset.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			19:00
+		</td>
+		<td>
+			Outdoor compot
+		</td>
+	</tr>
+	<tr>
+		<td>
+			20:00
+		</td>
+		<td>
+			Pelicompot alkaa
+		</td>
+	</tr>
+	<tr>
+		<td>
+			22:00
+		</td>
+		<td>
+			<b>Kaikkien compoentryjen deadline</b>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="background-color : rgb(102,153,204);">
+			SU 5.11
+		</td>
+	</tr>
+	<tr>
+		<td>
+			0:00 
+		</td>
+		<td>
+			Compot alkavat. Kaikki compot tulevat putkeen seuraavassa järjestyksessä: pikselin viskonta, mp3, raytrace, tracker music, demo. weird shit. 
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			12:00
+		</td>
+		<td>
+			Palkintojenjako ja loppuseremonia + Verkko alas
+		</td>
+	</tr>
+	<tr>
+		<td>
+			13:00
+		</td>
+		<td>
+			Sähköt pois
+		</td>
+	</tr>
+	<tr>
+		<td>
+			14:00
+		</td>
+		<td>
+			Kaikki ulos, ovet menee kiinni.
+		</td>
+	</tr>
+</table>
+
+</static>

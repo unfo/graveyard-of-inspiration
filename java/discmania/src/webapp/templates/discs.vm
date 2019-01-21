@@ -1,0 +1,78 @@
+#*
+    discs.vm
+    Shows a listing of discs
+    $Id: discs.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+#if ($doSearch)
+<h3>Search</h3>
+
+<table cellpadding="5" cellspacing="0">
+<form action="browse">
+    <input type="hidden" name="action" value="search">
+    <tr>
+        <td>
+            Search for
+        </td>
+        <td><input type="text"   name="query"  value="$!query"></td>
+        <td>
+            in
+        </td>
+        <td><select name="field">
+            <option value="artist" #if($field && $field.equals("artist")) selected #end >Artist</option>
+            <option value="name" #if($field && $field.equals("name")) selected #end >Disc name</option>
+        </select></td>
+        <td><input type="submit" value="Search >>"></td>
+    </tr>
+</form>
+</table>
+
+#else
+<h3>Browsing discs</h3>
+#end
+
+#if($results)
+    <blockquote>
+        $results disc(s) found.
+    </blockquote>
+    #if($pages && $pages.size() > 1)
+        <div class="searchresults">
+        Result pages:
+        #foreach($page in $pages)
+            #if($page.current) <span class="current"> #end
+            #if($doSearch)
+                <a href="browse?action=search&field=$field&query=$!query&start=$page.start">$page.number</a>
+            #else
+                <a href="browse?start=$page.start">$page.number</a>
+            #end
+            #if($page.current) </span> #end
+        #end
+        </div>
+    #end
+#end
+
+#if($discs.size() > 0)
+<table>
+    <tr>
+       <th>Artist</th>
+       <th>Title</th>
+       <th>Price</th>
+       <th>Stock balance</th>
+    </tr>
+#foreach ($disc in $discs)
+    <tr>
+        <td><a href="browse?action=search&field=artist&query=$disc.artist" title="Click to search by artist name">$disc.artist</a></td>
+        <td>$disc.name</td>
+        <td>$disc.price &#8364;</td>
+        <td>
+            #if ($disc.balance < 1)
+                <span class="nodiscs">$disc.balance</span>
+            #else
+                $disc.balance
+            #end
+        <td><a href="view?id=$disc.id">View</a></td>
+        <td><a href="cart?action=add&id=$disc.id">Add to cart</a></td>
+    </tr>
+#end
+</table>
+#end

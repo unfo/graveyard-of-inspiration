@@ -1,0 +1,9 @@
+spotify:track:6LrCe0pG6ZpJRjmm1l5oHs
+https://open.spotify.com/track/6LrCe0pG6ZpJRjmm1l5oHs
+spotify:album:6X1BVrP7yJJnpRBncnGIB5
+https://open.spotify.com/album/6X1BVrP7yJJnpRBncnGIB5
+spotify:artist:6BF0bXbsdujMSMeFZBGcBq
+https://open.spotify.com/artist/6BF0bXbsdujMSMeFZBGcBq
+spotify:user:unfo:playlist:3cUtSlr8DyrizK9nXavEUf
+https://open.spotify.com/user/unfo/playlist/3cUtSlr8DyrizK9nXavEUf
+foobar

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<menu>
+	<item href="/index">Etusivu</item>
+	<item href="/voting">Äänestäminen</item>
+	<item href="/verkkoohjeet.xml">Verkko-ohjeet</item>
+	<item href="/aikataulu.xml">Aikataulu</item>
+	<item href="http://jukebox.vaski.net">Mp3-jukebox</item>
+	<item href="/cs-turnaus.xml">CS-turnaus!</item>
+</menu>

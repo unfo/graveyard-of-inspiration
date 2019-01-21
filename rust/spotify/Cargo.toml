@@ -1,0 +1,8 @@
+[package]
+name = "spotify"
+version = "0.0.1"
+authors = [ "Jan Wikholm <jw@jw.fi>" ]
+
+[dependencies]
+hyper = "0.5.0"
+rustc-serialize = "0.3.14"

@@ -1,0 +1,52 @@
+#*
+    order_history.vm
+    Shows the order history for a given user.
+    $Id: order_history.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Order history</h3>
+
+#if(!$orders || $orders.size() == 0)
+You haven't placed any orders yet.
+#else
+
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Id</th>
+            <th>Arrived</th>
+            <th>Processed</th>
+            <th>Price</th>
+            <th>Discs included</th>
+        </tr>
+    #foreach ($order in $orders)
+        #if($order.id == $viewId)
+        <tr class="active">
+        #else
+        <tr>
+        #end
+            <td>#$order.id</td>
+            <td>$order.arrived.</td>
+            <td>
+            #if ($order.processed)
+                $order.processed
+            #else
+                Not yet processed.
+            #end
+            </td>
+            <td>$order.totalPrice</td>
+            <td>$order.totalItems</td>
+            <td><a href="orders?viewId=$order.id">View contents</a></td>
+        </tr>
+        #if ($order.items && $order.id == $viewId)
+        <tr>
+            <td colspan="6">
+                <div class="small">
+                #parse ("order.vm")
+                </div>
+            </td>
+         </tr>
+         #end
+    #end
+    </table>
+
+#end

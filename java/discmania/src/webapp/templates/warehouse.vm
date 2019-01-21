@@ -1,0 +1,71 @@
+#*
+    warehouse.vm
+    For warehouse employees that process orders etc.
+    $Id: warehouse.vm,v 1.1 2002/12/04 13:06:31 foo Exp $
+*#
+
+<h3>Warehouse</h3>
+
+<a href="warehouse?action=balances">Modify disc balances</a><br>
+<a href="warehouse?action=process">Process orders</a>
+<br><br>
+
+<div class="hr">
+
+#if ($action.equals("balances"))
+
+<table>
+    <tr>
+       <th>Artist</th>
+       <th>Title</th>
+       <th>Price</th>
+       <th>Balance</th>
+    </tr>
+#foreach ($disc in $discs)
+    <form action="warehouse" method="post">
+    <input type="hidden" name="action" value="set_balance">
+    <input type="hidden" name="id" value="$disc.id">
+    <tr>
+        <td><a href="browse?action=search&query=$disc.artist" title="Click to search by artist name">$disc.artist</a></td>
+        <td>$disc.name</td>
+        <td>$disc.price &#8364;</td>
+        <td><input type="text" name="balance" value="$disc.balance"></td>
+        <td><input type="submit" value="Change >>">
+    </tr>
+    </form>
+#end
+</table>
+
+#elseif ($action.equals("set_balance"))
+
+#if(!$errors)
+    Balance updated!
+#end
+
+#elseif ($action.equals("process"))
+
+    <h3>Unprocessed orders</h3>
+
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Id</th>
+            <th>Arrived</th>
+        </tr>
+    #foreach ($order in $orders)
+        <tr>
+            <td>#$order.id</td>
+            <td>$order.arrived.</td>
+            <td><a href="warehouse?action=process_order&id=$order.id">Process >></a></td>
+        </tr>
+    #end
+    </table>
+
+#elseif ($action.equals("process_order"))
+
+    #if (!$errors)
+        Order processed ok!
+    #end
+
+#end
+
+</div>

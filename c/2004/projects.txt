@@ -1,0 +1,141 @@
+                         Programming in C, Autumn 2003
+
+Project Subjects
+
+   Choose  one  of the subjects below and implement it in the C language.
+   Please see the project instructions for more information.
+
+1. Mail order directory
+
+  Write a program to maintain a list of subscribers to periodicals 
+  of a publisher. Your program should be able to 
+
+  1. Add new subscriber to a particulat periodical for a specified period.
+  2. Notify the subscribers regarding the expiry of subscription.
+  3  List all the subscribers to a periodical for a yesr.
+  4. Cancel a subscription.
+  5. Record the change in mailing address.
+
+  Make any reasonable assumptions where necessary.
+ 
+2. Simplified  RDF-repository
+
+  Write a program to a "RDF-repository"-idea: a
+  structure for a graph of subject-predicate-object -triples, a way to add
+  and remove triples and a simple way to do queries like this:
+
+  Entering data:
+  john knows alice
+  alice knows bill
+  bill knows alice
+  bill owns HEI-123
+  HEI-123 has Class car
+  HEI-123 has Brand Mercedes
+  HEI-123 has Colour Golden
+  bill hasBirthday 1.1.1970
+
+  And then a user could query it like this:
+
+  * knows alice
+  => should return all the responses which match the pattern, * being a
+  wildcard, so from above should return something like this:
+  john knows alice
+  bill knows alice
+  bill knows alice
+  (2 matches)
+
+  alice * *
+  => should return everything known about alice and so forth
+
+3. EIGHT QUEENS PROBLEM
+
+   Write a program to determine all solutions to place 8 queens on a
+   chess board without attacking one another.
+ 
+4. KNIGHT'S TOUR OF A CHESS BOARD
+
+   Starting from a given square in a  n x n chess board determine 
+   the  sequence of moves for a knight  ( if there exists one)to visit 
+   each square exactly once before returning to the starting square.
+ 
+5.  POLYNOMIAL ARITHMETIC
+
+    Write a program to perform polynomial addition, subtraction and 
+    multiplication of two polynomials in a single indeterminate.
+
+    e.g. if  P1 is 2x² + 3x + 1 and P2 is x³ + x² +1 
+         then P1 + P2 is x³ + 3x² + 3x + 1
+
+6  HYPHENATION ALGORITHM
+
+   The  following  is  a  hyphenation  algorithm.  Let c be the following
+   character to be processed.
+     * 1. c = first letter of the word
+     * 2. if c is a vowel, continue from 4.
+     * 3.  if  c  is  the  last  letter  of the word, the algorithm ENDS,
+       otherwise take the following letter and continue from 2.
+     * 4.  if  c  is  the  last  letter  in the word, the algorithm ENDS,
+       otherwise take the following letter
+     * 5. if c is a consonant, continue from 10.
+     * 6. if c forms one of these pairs: aa ai au ee ei eu ey ie ii iu oi
+       oo  ou  ui  uo  uu  yi  yy yö äi äy ää öi öy öö, togehter with the
+       previous lettercontinue from 8.
+     * 7. put a hyphen before c and continue from 4
+     * 8. if c is the last letter, the algorithm ENDS, otherwise take the
+       following letter
+     * 9. if c is a vowel, continue from 7.
+     * 10. if c is the last letter, the algorithm ENDS
+     * 11.  if  c  is followed by a vowel, put a hyphen before c and take
+       the   following  letter;  continue  from  4.  Otherwise  take  the
+       following letter and continue from 10.
+
+   NB.  The above algorithm is meant to give you an idea of it, not to be
+   the backbone of the program.
+
+7  GAME OF LIFE
+
+   Create a program that implements a simulation of the Game of Life. The
+   Game  of  Life, developed by the mathematician John Conway in the year
+   1970, simulates a grid of cells and primitive life according to simple
+   rules  . The beings are just born, they live and then die. Time passes
+   according  to  generation.  The  situation  of  the next generation is
+   directly  determined  by the previous one. Each individual cell's life
+   is  affected  by  its  eight  neighbouring  cells as follows: cells as
+   follows:
+     * If  the  cell  has two living neighbours, its state (live or dead)
+       does not change but remains the same.
+     * If  the  cell  has  three  live  neighbours,  it  is  alive in the
+       following generation
+     * If  the  cell  has  0,  1, 4-8 neighbours alive, it is dead in the
+       following generation.
+
+   The  game  ends  when  all the cells in the grid are dead, or when the
+   specified  number  of generations have been gone through. You can also
+   end  the game when the situation in the grid has settled into the same
+   pattern for several generations.
+
+8  FAMILY TREE
+
+   Create  a  program  with  which  the  user may make a family tree. The
+   following can be saved in the family tree: data on persons (name, date
+   of  birth,  time  of death), family relations (both official marriages
+   and  unofficial  relations  - the latter can be saved in order to keep
+   track  of  the  parents  of  children,  for instance) and the children
+   resulting  from  the  relationships.  For  the sake of simplicity, the
+   system  can be made so that the persons all have different names. Your
+   program must have at least the following functions:
+     * adding a person (a person can be added either 'individually' or as
+       someone's child)
+     * changing personal data
+     * adding a relationship
+     * printout of all the descendants from a certain person
+     * printout of all the ancestors to a certain person
+     * printout of all the registered relationships of a certain person
+
+   Your  program  can  rely on the sensibility of the input data. It does
+   not  have  to  check, for instance, that someone is not married to two
+   persons  at  the  same time, or that someone's child is not older than
+   the  parent.  Your  program  must  use  dynamic  memory  reservation -
+   solutions based on only charts will not be accepted.
+
+

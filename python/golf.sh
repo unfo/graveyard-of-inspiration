@@ -1,0 +1,1 @@
+read x;for i in 1 4 4 12 2 3 8 15 8 1;do echo ${x:$p:$i};p=$((p+i));done
